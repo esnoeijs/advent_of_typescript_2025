@@ -1,0 +1,7 @@
+.corepack
+.direnv
+inputs/*
+node_modules
+dist
+*.tsbuildinfo
+pnpm-debug.log*

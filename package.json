@@ -1,0 +1,39 @@
+{
+  "name": "aoc-typescript-2025-cli",
+  "version": "0.1.0",
+  "description": "Starter CLI built with modern TypeScript tooling",
+  "type": "module",
+  "bin": {
+    "aoc-typescript-2025": "./dist/cli.js"
+  },
+  "main": "./dist/cli.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsx watch src/cli.ts",
+    "dev:day": "tsx watch src/cli.ts --",
+    "lint": "tsc --noEmit",
+    "start": "node dist/cli.js",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "cli",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "tsup": "^8.1.2",
+    "tsx": "^4.16.2",
+    "typescript": "^5.6.3",
+    "vitest": "^4.0.14"
+  },
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
+}
