@@ -91,19 +91,23 @@ function parsePart(raw: string): PartNumber | undefined {
 }
 
 function printHelp(): void {
-  console.log(`Usage: aoc-typescript-2025 [options]\n\n`
-    + `Options:\n`
-    + `  -h, --help            Show this message\n`
-    + `      --list            List the available days\n`
-    + `      --day <n>         Select the day to run (defaults to latest)\n`
-    + `      --part <1|2>      Run only a single part (defaults to both)\n`
-    + `      --input <path>    Override input file path\n`
-    + `  -v, --verbose         Show detailed error messages with stack traces`);
+  console.log(
+    `Usage: aoc-typescript-2025 [options]\n\n` +
+      `Options:\n` +
+      `  -h, --help            Show this message\n` +
+      `      --list            List the available days\n` +
+      `      --day <n>         Select the day to run (defaults to latest)\n` +
+      `      --part <1|2>      Run only a single part (defaults to both)\n` +
+      `      --input <path>    Override input file path\n` +
+      `  -v, --verbose         Show detailed error messages with stack traces`,
+  );
 }
 
 function printAvailableDays(days: number[]): void {
   if (days.length === 0) {
-    console.log("No days available yet. Add files under src/days/dayXX.ts to get started.");
+    console.log(
+      "No days available yet. Add files under src/days/dayXX.ts to get started.",
+    );
     return;
   }
 
@@ -137,20 +141,26 @@ async function runCLI(): Promise<number> {
   }
 
   if (availableDays.length === 0) {
-    console.error("No AoC days found. Add files under src/days/dayXX.ts to continue.");
+    console.error(
+      "No AoC days found. Add files under src/days/dayXX.ts to continue.",
+    );
     return 1;
   }
 
   const lastDay = availableDays[availableDays.length - 1];
   if (lastDay === undefined) {
-    console.error("No AoC days found. Add files under src/days/dayXX.ts to continue.");
+    console.error(
+      "No AoC days found. Add files under src/days/dayXX.ts to continue.",
+    );
     return 1;
   }
 
   const targetDay = options.day ?? lastDay;
 
   if (!Number.isInteger(targetDay) || targetDay < 1 || targetDay > 25) {
-    console.error("Invalid day provided. Expected an integer between 1 and 25.");
+    console.error(
+      "Invalid day provided. Expected an integer between 1 and 25.",
+    );
     return 1;
   }
 
@@ -174,11 +184,15 @@ async function runCLI(): Promise<number> {
 
     try {
       const result = await solver(input);
-      console.log(`Day ${formatDayId(targetDay)} Part ${part}: ${String(result)}`);
+      console.log(
+        `Day ${formatDayId(targetDay)} Part ${part}: ${String(result)}`,
+      );
     } catch (error) {
       exitCode = 1;
       const errorMessage = formatError(error, options.verbose ?? false);
-      console.error(`Error running Day ${formatDayId(targetDay)} Part ${part}:`);
+      console.error(
+        `Error running Day ${formatDayId(targetDay)} Part ${part}:`,
+      );
       console.error(errorMessage);
     }
   }
@@ -186,9 +200,11 @@ async function runCLI(): Promise<number> {
   return exitCode;
 }
 
-void runCLI().then((code) => {
-  process.exitCode = code;
-}).catch((error) => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});
+void runCLI()
+  .then((code) => {
+    process.exitCode = code;
+  })
+  .catch((error) => {
+    console.error(error instanceof Error ? error.message : error);
+    process.exitCode = 1;
+  });

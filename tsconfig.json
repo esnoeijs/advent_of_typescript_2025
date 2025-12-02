@@ -17,5 +17,10 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "tsup.config.ts", "vitest.config.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "tsup.config.ts",
+    "vitest.config.ts"
+  ]
 }

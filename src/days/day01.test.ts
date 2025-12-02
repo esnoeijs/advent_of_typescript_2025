@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import day01 from "./day01";
 
 describe("Day 01", () => {
@@ -38,9 +38,9 @@ L82`;
       const result = await day01.solver.part2(exampleInput);
       expect(result).toBe(expected);
     }),
-    it("should account for large rotations", async () => {
-      // Add your example input and expected output here
-      const exampleInput = `R1000
+      it("should account for large rotations", async () => {
+        // Add your example input and expected output here
+        const exampleInput = `R1000
 L68
 L30
 R48
@@ -51,9 +51,9 @@ L1
 L99
 R14
 L82`;
-      const expected = 16;
-      const result = await day01.solver.part2(exampleInput);
-      expect(result).toBe(expected);
-    });
+        const expected = 16;
+        const result = await day01.solver.part2(exampleInput);
+        expect(result).toBe(expected);
+      });
   });
 });

@@ -18,7 +18,7 @@ export async function loadInput(options: LoadInputOptions): Promise<string> {
   const path = resolveInputPath(options);
 
   try {
-    console.log(path)
+    console.log(path);
     return await readFile(path, "utf8");
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {

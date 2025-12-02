@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import day02 from "./day02";
 
 describe("Day 02", () => {
