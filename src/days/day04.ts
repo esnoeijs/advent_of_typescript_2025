@@ -17,24 +17,28 @@ const solver: DayModule["solver"] = {
     //ensure we have rectangular grid
     if (rows.length < 1) throw new Error("Invalid grid input");
     const columnCount = rows[0]?.length ?? -1;
-    if (columnCount < 1 || !rows.every((row) => row.length === columnCount)) throw new Error("Invalid grid input");
+    if (columnCount < 1 || !rows.every((row) => row.length === columnCount))
+      throw new Error("Invalid grid input");
 
     for (const [y, row] of rows.entries()) {
       for (const [x, cell] of row.entries()) {
         let paperCount = 0;
 
         // only look at surrounding cells for cells with paper
-        if (cell !== '@') continue;
+        if (cell !== "@") continue;
 
         for (const yOffset of [-1, 0, +1]) {
           for (const xOffset of [-1, 0, +1]) {
             // skip own cell
             if (yOffset === 0 && xOffset === 0) continue;
 
-            if (rows[y + yOffset] === undefined || rows[y + yOffset]![x + xOffset] === undefined) {
+            if (
+              rows[y + yOffset] === undefined ||
+              rows[y + yOffset]![x + xOffset] === undefined
+            ) {
               continue;
             }
-            if (rows[y + yOffset]![x + xOffset] === '@') {
+            if (rows[y + yOffset]![x + xOffset] === "@") {
               paperCount++;
             }
           }
@@ -60,7 +64,8 @@ const solver: DayModule["solver"] = {
     //ensure we have square grid
     if (rows.length < 1) throw new Error("Invalid grid input");
     const columnCount = rows[0]?.length ?? -1;
-    if (columnCount < 1 || !rows.every((row) => row.length === columnCount)) throw new Error("Invalid grid input");
+    if (columnCount < 1 || !rows.every((row) => row.length === columnCount))
+      throw new Error("Invalid grid input");
 
     let removedCells: Position[];
     do {
@@ -70,17 +75,20 @@ const solver: DayModule["solver"] = {
           let paperCount = 0;
 
           // only look at surrounding cells for cells with paper
-          if (cell !== '@') continue;
+          if (cell !== "@") continue;
 
           for (const yOffset of [-1, 0, +1]) {
             for (const xOffset of [-1, 0, +1]) {
               // skip own cell
               if (yOffset === 0 && xOffset === 0) continue;
 
-              if (rows[y + yOffset] === undefined || rows[y + yOffset]![x + xOffset] === undefined) {
+              if (
+                rows[y + yOffset] === undefined ||
+                rows[y + yOffset]![x + xOffset] === undefined
+              ) {
                 continue;
               }
-              if (rows[y + yOffset]![x + xOffset] === '@') {
+              if (rows[y + yOffset]![x + xOffset] === "@") {
                 paperCount++;
               }
             }
@@ -88,7 +96,7 @@ const solver: DayModule["solver"] = {
 
           if (paperCount < 4) {
             accessiblePapers++;
-            removedCells.push({y, x});
+            removedCells.push({ y, x });
           }
         }
       }
@@ -96,7 +104,7 @@ const solver: DayModule["solver"] = {
       for (const pos of removedCells) {
         rows[pos.y]![pos.x] = "x";
       }
-    } while (removedCells.length > 0)
+    } while (removedCells.length > 0);
 
     return accessiblePapers;
   },
