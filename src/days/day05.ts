@@ -6,13 +6,11 @@ type Range = {
 };
 
 function createFreshRanges(freshRangesInput: string): Range[] {
-  return freshRangesInput
-    .split("\n")
-    .map((rangeInput) => {
-        const rangeNums = rangeInput.split("-").map(Number);
-        if (rangeNums.length !== 2) throw new Error('Invalid input');
-        return { min: rangeNums[0] as number, max: rangeNums[1] as number };
-    })
+  return freshRangesInput.split("\n").map((rangeInput) => {
+    const rangeNums = rangeInput.split("-").map(Number);
+    if (rangeNums.length !== 2) throw new Error("Invalid input");
+    return { min: rangeNums[0] as number, max: rangeNums[1] as number };
+  });
 }
 
 const solver: DayModule["solver"] = {
@@ -26,8 +24,11 @@ const solver: DayModule["solver"] = {
     return ingredientIds
       .split("\n")
       .map(Number)
-      .filter(ingredientId => freshRanges.some(range => ingredientId >= range.min && ingredientId <= range.max))
-      .length
+      .filter((ingredientId) =>
+        freshRanges.some(
+          (range) => ingredientId >= range.min && ingredientId <= range.max,
+        ),
+      ).length;
   },
 
   async part2(_input: string) {
@@ -56,7 +57,10 @@ const solver: DayModule["solver"] = {
       if (spliceCount > 0) freshRanges.splice(idx + 1, spliceCount);
     }
 
-    return freshRanges.reduce((acc, range) => acc + (range.max - range.min) + 1, 0);
+    return freshRanges.reduce(
+      (acc, range) => acc + (range.max - range.min) + 1,
+      0,
+    );
   },
 };
 
