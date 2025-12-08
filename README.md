@@ -72,3 +72,9 @@ By default, running without `--part` executes both parts sequentially and prints
     --input <path>    Override the input file location
 -v, --verbose         Show detailed error messages with stack traces
 ```
+
+## Environment Variables
+
+Some days may require additional configuration via environment variables:
+
+- **`AOC_DAY08_PAIR_COUNT`** - Number of closest pairs to solve for Day 8 (default: 1000 for actual input, set to 10 for test input)
